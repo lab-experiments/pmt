@@ -1,0 +1,94 @@
+pmt - versão 1.0
+
+aula: Thaisa Mirely
+(desenvolvimento de todos os artefatos do projeto)
+
+
+1- Descrição da aplicação.
+
+O propósito do programa é a realização de buscas com base em um padrão, em arquivos de texto.
+O programa é executado em linha de comando, via terminal por meio de um executável(mais informações no arquivo README.txt).
+Após a execução é indicado o nome do arquivo, a linha e o conteúdo da linha onde o padrão foi encontrado, assim como também
+o número de ocorrências geral do padrão no texto.
+
+Os comando a seguir fazem parte do escopo dessa versão:
+
+
+************************
+***** Busca Padrão *****
+************************
+
+
+$ pmt pattern textfile [textfile...]
+
+
+    = pattern: uma string com o padrão para busca no texto.
+    = textfile: arquivo com extensão txt, podendo ser um ou vários. Arquivos serão lidos pela ordem de inserção.
+
+--------------------------------------------------
+$ pmt --pattern patternfile textfile [textfile...]
+    ou
+$ pmt -p patternfile textfile [textfile...]
+
+
+    = -p, --pattern: opção de argumento
+    = patternfile: arquivo de texto com extensão txt, podendo conter um ou mais padrões por linha. Cada arquivo terá todos os padrões pesquisados por vez.
+    = textfile: arquivo com extensão txt, podendo ser um ou vários. Arquivos serão lidos pela ordem de inserção.
+
+
+Além dos comando acima é possível obter informações por meio dos comandos:
+
+$pmt --help
+    ou
+$pmt -h
+
+2- Descrição da implementação
+
+A aplicação foi desenvolvida incialmente em C, mas a versão disponível se encontra em C++.
+A escolha da linguagem foi realizada com base nas estruturas que as mesmas implementam. Especificamente manipulações de string, vetor e arquivos.
+
+Para construção do motor de busca(algoritmo boyer moore) foi utilizada a heurísca de badCharacteres.
+Os arquivos de texto são lidos linha por linha e em cada linha lida é realizado o processo de busca do padrão que pode ser via string literal ou via
+string em um arquivo de texto.
+
+O fluxo de execução foi dividido em duas formas:
+
+ 1 - padrão como string literal
+     para essa leitura é realizada a checagem do padrão linha por linha do arquivo de texto, pode pode ser de 1...n.
+
+ 2- padrão via arquivo .txt
+    por meio de um interação é realiza a leitura linha por linha do padrão. Cada padrão(linha do arquivo de padrão) é analisado em todos os textos e a mesma lógica se aplica
+    aos padrões subsequentes.
+
+
+3- Bugs conhecidos e futuras funcionalidades
+
+Abaixo será listado bugs relacionados a implementação:
+  - era utilizada a heurística de GoodSuffix para aumentar a performance do algoritimo de busca padrão;
+  - será implementada a busca aproximada na próxima versão.
+  - estrutura do projeto será refatorada para remoção de redundâncias de código e área de baixo desempenho.
+
+
+4- Testes
+
+Foram realizados testes com arquivos de texto com quebra de linha de com linha contínua.
+
+Os testes ocorreram com o uso de arquivos de 50MB à 10MB.
+
+Para fins de consulta os seguintes arquivos foram utilizados:
+- texto contínuo:
+  50MB: http://goo.gl/BI3cu8
+  100MB: http://goo.gl/GpN9iw
+
+- texto com formatação:
+  50MB: http://goo.gl/FQLktQ
+  100MB: http://goo.gl/RjEHTn
+
+
+  *** Configurações da máquina de testes ***
+
+ Sistema operacional: OSx El Capitan
+
+ Processador: 2.4 GHz Intel Core 2 Duo
+ Memórias: 4GB 1067 MHz DDR3
+ HD: 187.71 GB livres de 249.2 GB
