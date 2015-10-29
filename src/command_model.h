@@ -19,40 +19,40 @@ private:
     
     int m_emax;
     std::string m_pattern;
-    std::vector<std::string> m_textFilenames;
+    std::vector<std::string> m_text_file_names;
     
 public:
     
     CommandModel() : m_emax(0) {}
     
-    int getEmax()
+    int GetEmax()
     {
         return this->m_emax;
     }
     
-    std::string getPattern()
+    std::string GetPattern()
     {
         return this->m_pattern;
     }
     
-    std::vector<std::string> getTextFilenames()
+    std::vector<std::string> GetTextFileNames()
     {
-        return this->m_textFilenames;
+        return this->m_text_file_names;
     }
     
-    void setEmax(int value)
+    void SetEmax(int value)
     {
         this->m_emax = value;
     }
     
-    void setPattern(std::string value)
+    void SetPattern(std::string value)
     {
         this->m_pattern = value;
     }
     
-    void setTextFilenames(std::vector<std::string> value)
+    void SetTextFilenames(std::vector<std::string> value)
     {
-        this->m_textFilenames = value;
+        this->m_text_file_names = value;
     }
 
 };

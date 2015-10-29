@@ -16,7 +16,7 @@
 #include <iostream>
 #include <fstream>
 
-void makeExactSearch(std::string pattern, std::vector<std::string> textFilenames);
+void MakeExactSearch(std::string pattern, std::vector<std::string> text_file_names);
 
 #endif /* defined(__pmt_project__exactMatching__) */
 

@@ -12,22 +12,22 @@
 #include <vector>
 #include <sstream>
 
-#include "CommandModel.h"
-#include "InputControl.h"
-#include "ExactMatching.h"
+#include "command_model.h"
+#include "input_control.h"
+#include "exact_matching.h"
 
 int main(int argc, const char * argv[]) {
     
-    CommandModel commandModel = setCommand(argc,argv);
+    CommandModel command_model = SetCommand(argc,argv);
     
-    if(commandModel.getEmax()!= 0)
+    if(command_model.GetEmax()!= 0)
     {
      // TODO - implementacao pendente;
      // makeApproximateSearch(commandModel.getPattern(), commandModel.getTextFilenames(), commandModel.getEmax());
     }
     else
     {
-        makeExactSearch(commandModel.getPattern(), commandModel.getTextFilenames());
+        MakeExactSearch(command_model.GetPattern(), command_model.GetTextFileNames());
     }
     return 0;
 }

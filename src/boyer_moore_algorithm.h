@@ -14,6 +14,6 @@
 #include <sstream>
 #include <iostream>
 
-std::vector<int> search(std::string pattern, std::string text);
+std::vector<int> Search(std::string pattern, std::string text);
 
 #endif /* defined(__pmt_project__BoyerMooreAlgorithm__) */

@@ -11,39 +11,35 @@
 #include <iostream>
 #include <algorithm>
 
-#include "BoyerMooreAlgorithm.h"
+#include "boyer_moore_algorithm.h"
 
 #define MAX_CHAR_LEN 256
 
 // Preprocessamento da heuristica de bad character
-void badCharacter(std::string pattern, int len_pattern, int badCharacter[MAX_CHAR_LEN])
+void BadCharacter(std::string pattern, int len_pattern, int bad_character[MAX_CHAR_LEN])
 {
     int i;
-    
     //inicializa todas as ocorrencias com -1
     for (i = 0; i < MAX_CHAR_LEN; i++)
     {
-        badCharacter[i] = -1;
+        bad_character[i] = -1;
     }
     // Preenche o valor real da última ocorrência de um caractere
     for (i = 0; i < len_pattern; i++)
     {
-        badCharacter[pattern[i]] = i;
+        bad_character[pattern[i]] = i;
     }
-    
 }
 
 
-std::vector<int> search(std::string pattern, std::string text)
+std::vector<int> Search(std::string pattern, std::string text)
 {
+    int bad_char[MAX_CHAR_LEN];
     std::vector<int> result;
-    
     int len_pattern = (int)pattern.length();
     int len_text = (int)text.length();
     
-    int badchar[MAX_CHAR_LEN];
-    
-    badCharacter(pattern, len_pattern, badchar);
+    BadCharacter(pattern, len_pattern, bad_char);
     
     int shift = 0;
     while (shift <= (len_text - len_pattern))
@@ -57,13 +53,12 @@ std::vector<int> search(std::string pattern, std::string text)
         if(i < 0)
         {
             result.push_back(shift);
-            shift += (shift + len_pattern < len_text) ? len_pattern - badchar[text[shift + len_pattern]] : 1;
+            shift += (shift + len_pattern < len_text) ? len_pattern - bad_char[text[shift + len_pattern]] : 1;
         }
         else
         {
-            shift += std::max(1, i - badchar[text[shift + i]]);
+            shift += std::max(1, i - bad_char[text[shift + i]]);
         }
-        
     }
     
     return result;

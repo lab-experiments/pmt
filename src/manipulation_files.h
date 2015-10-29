@@ -12,9 +12,8 @@
 #include <vector>
 #include <fstream>
 
-bool isFile(const std::string& name);
+bool IsFile(const std::string& name);
 
-/* responsavel por validar se arquivos existe e abri-los, assim como retornar todas as linhas. */
-std::vector<std::string> getFileLines(std::string filename);
+std::vector<std::string> GetFileLines(std::string file_name);
 
 #endif /* defined(__pmt_project__manipulationFiles__) */
