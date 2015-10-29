@@ -7,7 +7,7 @@ Program developed in C language similar to the Grep-GNU(https://www.gnu.org/soft
 
 - Criar um executável
 
-1- extraia o arquivo tmbs2.1.zip
+1- clone ou baixe esse o projeto desse repositório
 2- acesse a pasta pmt/src/
 3- abra seu terminal(Shell) e execute execute o comando cd afim de chagar ao diretório pmt/src/
 4- na linha de comando em seu terminal execute o comando make
