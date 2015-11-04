@@ -12,6 +12,9 @@
 #include <algorithm>
 
 #include "boyer_moore_algorithm.h"
+#include "command_model.h"
+
+using namespace std::chrono;
 
 #define MAX_CHAR_LEN 256
 
@@ -31,9 +34,18 @@ void BadCharacter(std::string pattern, int len_pattern, int bad_character[MAX_CH
     }
 }
 
-
-std::vector<int> Search(std::string pattern, std::string text)
+void GoodSufixx()
 {
+
+}
+
+
+std::vector<int> SearchUsingBoyerMoore(CommandModel command_model, std::string text, long long& duration)
+{
+    // inicia contador para tempo de execução da função
+    //high_resolution_clock::time_point begin_time = high_resolution_clock::now();
+    
+    std::string pattern = command_model.GetPattern();
     int bad_char[MAX_CHAR_LEN];
     std::vector<int> result;
     int len_pattern = (int)pattern.length();
@@ -62,5 +74,9 @@ std::vector<int> Search(std::string pattern, std::string text)
     }
     
     return result;
+    
+   // high_resolution_clock::time_point end_time = high_resolution_clock::now();
+   // duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - begin_time).count();
+
 }
 
