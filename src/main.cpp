@@ -14,20 +14,17 @@
 
 #include "command_model.h"
 #include "input_control.h"
-#include "exact_matching.h"
+#include "search.h"
+#include "boyer_moore_algorithm.h"
 
 int main(int argc, const char * argv[]) {
     
-    CommandModel command_model = SetCommand(argc,argv);
+    Search::PSearchType out_search_type = nullptr;
+
+    CommandModel command_model = SetCommand(argc, argv, out_search_type);
     
-    if(command_model.GetEmax()!= 0)
-    {
-     // TODO - implementacao pendente;
-     // makeApproximateSearch(commandModel.getPattern(), commandModel.getTextFilenames(), commandModel.getEmax());
-    }
-    else
-    {
-        MakeExactSearch(command_model.GetPattern(), command_model.GetTextFileNames());
-    }
+    Search search;
+    search.SearchPattern(command_model, out_search_type);
+
     return 0;
 }
