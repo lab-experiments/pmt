@@ -14,6 +14,8 @@
 #include <sstream>
 #include <iostream>
 
-std::vector<int> Search(std::string pattern, std::string text);
+#include "command_model.h"
+
+std::vector<int> SearchUsingBoyerMoore(CommandModel command_line, std::string text_line, long long& duration);
 
 #endif /* defined(__pmt_project__BoyerMooreAlgorithm__) */
