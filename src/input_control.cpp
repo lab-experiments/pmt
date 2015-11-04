@@ -15,10 +15,14 @@
 
 #include "input_control.h"
 #include "manipulation_files.h"
+#include "search.h"
+#include "boyer_moore_algorithm.h"
 
 void ShowHelp();
 
 std::vector<std::string> ParseArgumentsFileName(int index, const char* args[],CommandModel command_model, std::string& pattern);
+
+
 
 /* Estrutura com as opcoes da linha de comando.
  *TODO - adicao do comando -e, -edit, para busca aproximada
@@ -33,7 +37,8 @@ const struct option CommandOptions[] =
 };
 
 
-CommandModel SetCommand(int argc, const char * argv[]){
+
+CommandModel SetCommand(int argc, const char * argv[], Search::PSearchType& out_search_type){
  
     CommandModel command_model;
     int n_option;
@@ -68,20 +73,35 @@ CommandModel SetCommand(int argc, const char * argv[]){
     if (argv[optind] != NULL )
     {
         command_model.SetTextFilenames(ParseArgumentsFileName(optind, argv, command_model, pattern));
-        if (!pattern.empty()) {
+        if (!pattern.empty())
+        {
             command_model.SetPattern(pattern);
         }
         
     }
     
-//checa se o padrao eh informado via arquivo ou string
-    if(command_model.GetPattern().empty()){
+    
+    //checa se o padrao eh informado via arquivo ou string
+    if(command_model.GetPattern().empty())
+    {
         fprintf(stdout,"Pattern uninformed.");
         exit(EXIT_FAILURE);
     }
     
+    
+    if (command_model.GetEmax() != 0)
+    {
+        //SearchOccurrences = SearchUsingBoyerMoore;
+    }
+    else
+    {
+        out_search_type = SearchUsingBoyerMoore;
+    }
+    
     return command_model;
 }
+
+
 
 //obtem os argumentos em excesso e converte seu nome da forma wildcard para a forma literal
 std::vector<std::string> ParseArgumentsFileName(int index,const char* args[],CommandModel command_model, std::string& pattern)
@@ -140,6 +160,8 @@ std::vector<std::string> ParseArgumentsFileName(int index,const char* args[],Com
     globfree(& results);
     return result_args_file_name;
 }
+
+
 
 //funcao para exibicao de texto de ajuda, indicando o padrao de comando e as opcoes disponiveis.
 void ShowHelp()
