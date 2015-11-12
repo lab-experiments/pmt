@@ -56,7 +56,7 @@ $ pmt pattern textfile [textfile...]
 ```
 $ pmt --pattern patternfile textfile [textfile...]
 
-    ***ou***
+    ou
 
 $ pmt -p patternfile textfile [textfile...]
 ```
@@ -70,7 +70,7 @@ Para mais de um arquivo de texto para busca e mais de um padrão de texto, cada 
 
 ```
 $pmt --help
-    ***ou***
+    ou
 $pmt -h
 ```
 - ***-h, --help***: obter informações sobre os parâmetros utilizados 
@@ -79,9 +79,9 @@ $pmt -h
 
 ##Algoritmo utilizado:
 
- - Boyer Moore 
- -    http://www.cin.ufpe.br/~paguso/courses/if767/bib/Boyer_1977.pdf (busca exata)
- -    (http://www.stoimen.com/blog/2012/04/17/computer-algorithms-boyer-moore-string-search-and-matching/)
+ - Boyer Moore: 
+ -   http://goo.gl/JOudnG
+ -   http://goo.gl/JwNtXh
 
 
 
