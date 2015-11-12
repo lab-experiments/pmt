@@ -17,11 +17,11 @@ pmt/
 
 - clone ou baixe esse o projeto em seu computador
 
-- extraia o arquivo baixado ou acesssa a pasta a qual o projeto foi clonado e navegue até o diretório **pmt/src/**
+- extraia o arquivo baixado ou acesssa a pasta a qual o projeto foi clonado e navegue até o diretório **pmt/src/** ou **pmt-master/src/**
 
-- abra seu terminal(Shell) e execute execute o comando **cd** afim de chegar até o diretório **pmt/src/**
+- abra seu terminal(Shell) e execute execute o comando **cd** afim de chegar até o diretório **pmt/src/** ou **pmt-master/src/**
 
-- estando dentro do diretório **pmt/src/** na linha de comando em seu terminal execute o comando ***make***
+- estando dentro do diretório **pmt/src/** ou **pmt-master/src/** na linha de comando em seu terminal execute o comando ***make***
 
 Após realizar os passos indicados acima, será criada uma pasta **bin/** no diretório **pmt** contendo os arquivos **.o** e o executável do programa.
 
@@ -38,9 +38,9 @@ pmt/
 
 ####Executar o programa
 
-- após a execução dos passos [Criar um executável](https://github.com/lab-experiments/pmt/#criar-um-executável), acesse via terminal o diretório onde seu executável se encontra - **pmt/bin/** - execute o comando ***./pmt -h*** ou ***./pmt --help*** para fins de compreensão dos parâmetros de entrada do programa. 
+- após a execução dos passos [Criar um executável](https://github.com/lab-experiments/pmt/#criar-um-executável), acesse via terminal o diretório onde seu executável se encontra - **pmt/bin/** ou ou **pmt-master/bin/**- execute o comando ***./pmt -h*** ou ***./pmt --help*** para fins de compreensão dos parâmetros de entrada do programa. 
 
-- para realizar um busca é necessário que os arquivos  de texto e/ou padrões estajam no mesmo diretório do arquivo executável do programa(**pmt/bin/**);
+- para realizar um busca é necessário que os arquivos  de texto e/ou padrões estajam no mesmo diretório do arquivo executável do programa(**pmt/bin/** ou ou **pmt-master/bin/**);
 
 
 ## Comandos
