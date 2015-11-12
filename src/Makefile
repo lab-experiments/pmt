@@ -1,31 +1,36 @@
-## Version 1.0 ##
-############################# Makefile ##########################
+##########################################
+#               pmt make                 #
+##########################################
+
+# Compiler options
 CC=g++
-CFLAGS=-W -Wall -ansi -pedantic
-EXEC=pmt
-SRC=$(wildcard *.cpp) # equivale a main.c search_file.c exact_matching.c approximate_matching.c
-OBJ=$(SRC:.cpp=.o) # equivale a main.o search_file.o exact_matching.o approximate_matching.o
-HEADERS=$(wildcard *.h) #equivale a search_file.h exact_matching.h exact_matching.h
+CFLAGS=-c -Wall
+EXECUTABLE_NAME=pmt
 
-all: pmt
-pmt: $(OBJ)
-# $@ = pmt:
-# $^ = main.o search_file.o exact_matching.o approximate_matching.o
-	$(CC) -o $@ $^
+# Folders
+BIN=../bin
+OBJ=$(BIN)/obj
 
-%.o: %.cpp $(HEADERS)
-	$(CC) -o $@ -c $< $(CFLAGS)
-.PHONY: clean mrproper
+# Files
+SRC=$(wildcard *.cpp)
+
+EXECUTABLE_FILES = $(EXECUTABLE_NAME:%=$(BIN)/%)
+OBJECT_FILES     = $(SRC:%.cpp=$(OBJ)/%.o)
+
+# Commands
+# refs http://www.gnu.org/software/make/manual/make.html
+build: $(EXECUTABLE_FILES)
+
 clean:
-	rm -rf *.o pmt *~
-mrproper: clean
-	rm -rf EXEC
+		m -r -f $(BIN)
 
-#tar:
-#	tar cvjf pmt.tar.bz2 $(SRC) $(HEADERS)
+.PHONY: build clean
 
-#Os comandos no console são:
-#    make
-#    make install
-#    make clean
-#    make mrproper .Para apagar os binarios.
+$(EXECUTABLE_FILES): $(OBJECT_FILES)
+		    @$(CC) -o $@ $^
+		    @echo "Build successful!"
+
+$(OBJECT_FILES): $(OBJ)/%.o: %.cpp
+		    @echo Compiling $<
+		    @mkdir -p $(@D)
+		    @$(CC) $(CFLAGS) -o $@ $<
