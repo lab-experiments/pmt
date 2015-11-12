@@ -40,7 +40,7 @@ pmt/
 
 - após a execução dos passos [Criar um executável](https://github.com/lab-experiments/pmt/#criar-um-executável), acesse via terminal o diretório onde seu executável se encontra - **pmt/bin/** ou ou **pmt-master/bin/**- execute o comando ***./pmt -h*** ou ***./pmt --help*** para fins de compreensão dos parâmetros de entrada do programa. 
 
-- para realizar um busca é necessário que os arquivos  de texto e/ou padrões estajam no mesmo diretório do arquivo executável do programa(**pmt/bin/** ou ou **pmt-master/bin/**);
+- para realizar um busca é necessário que os arquivos  de texto e/ou padrões estajam no mesmo diretório do arquivo executável do programa(**pmt/bin/** ou ou **pmt-master/bin/**) ou que seja passado como parâmetro o caminho absoluto;
 
 
 ## Comandos
