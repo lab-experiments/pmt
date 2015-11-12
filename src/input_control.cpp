@@ -1,4 +1,4 @@
-//
+                                             //
 //  inputControl.cpp
 //  pmt-project
 //
@@ -23,7 +23,6 @@ void ShowHelp();
 std::vector<std::string> ParseArgumentsFileName(int index, const char* args[],CommandModel command_model, std::string& pattern);
 
 
-
 /* Estrutura com as opcoes da linha de comando.
  *TODO - adicao do comando -e, -edit, para busca aproximada
  */
@@ -31,7 +30,6 @@ const struct option CommandOptions[] =
 {
     {"version", no_argument,       0, 'v'},
     {"help",    no_argument,       0, 'h'},
-  //{"edit",    required_argument, 0, 'e'},
     {"pattern", required_argument, 0, 'p'},
     { 0,         0,                0,  0 },
 };
@@ -39,8 +37,9 @@ const struct option CommandOptions[] =
 
 
 CommandModel SetCommand(int argc, const char * argv[], Search::PSearchType& out_search_type){
- 
+
     CommandModel command_model;
+    bool is_approximated_search = false;
     int n_option;
     const char* option_string = "vhe:p:";
     std::string pattern;
@@ -58,7 +57,7 @@ CommandModel SetCommand(int argc, const char * argv[], Search::PSearchType& out_
                 break ;
             //TODO - Implementacao pendente. Busca aproximada
             //case 'e':
-            //    commandModel.setEmax(atoi(optarg));
+            //    is_approximated_search = true;
             //    break ;
             case 'p':
                 command_model.SetPattern(optarg);
@@ -67,8 +66,8 @@ CommandModel SetCommand(int argc, const char * argv[], Search::PSearchType& out_
                 exit(EXIT_FAILURE);
         }
     }
-    
-    
+
+
     //verifica se ha arquivos de texto informados nos argumentos de excesso
     if (argv[optind] != NULL )
     {
@@ -77,19 +76,19 @@ CommandModel SetCommand(int argc, const char * argv[], Search::PSearchType& out_
         {
             command_model.SetPattern(pattern);
         }
-        
+
     }
-    
-    
+
+
     //checa se o padrao eh informado via arquivo ou string
     if(command_model.GetPattern().empty())
     {
         fprintf(stdout,"Pattern uninformed.");
         exit(EXIT_FAILURE);
     }
-    
-    
-    if (command_model.GetEmax() != 0)
+
+
+    if (is_approximated_search)
     {
         //SearchOccurrences = SearchUsingBoyerMoore;
     }
@@ -97,7 +96,7 @@ CommandModel SetCommand(int argc, const char * argv[], Search::PSearchType& out_
     {
         out_search_type = SearchUsingBoyerMoore;
     }
-    
+
     return command_model;
 }
 
@@ -110,7 +109,7 @@ std::vector<std::string> ParseArgumentsFileName(int index,const char* args[],Com
     int flags = 0;
     glob_t results;
     int _return;
-    
+
     for(int i = optind; args[i] != NULL; i++) {
         flags |= (1 > 1 ? GLOB_APPEND : 0);
         _return = glob(args[i], flags, 0, & results);
@@ -144,19 +143,19 @@ std::vector<std::string> ParseArgumentsFileName(int index,const char* args[],Com
               }
           }
     }
-    
+
     //salva os nomes dos arquivos convertidos
     for (int i = 0; i < results.gl_pathc; i++)
     {
         result_args_file_name.push_back(results.gl_pathv[i]);
     }
-    
+
     if(result_args_file_name.empty())
     {
         fprintf(stdout,"Text to search uninformed.");
         exit(EXIT_FAILURE);
     }
-    
+
     globfree(& results);
     return result_args_file_name;
 }
@@ -174,10 +173,8 @@ void ShowHelp()
             -p, --pattern patternfile:   Performs the search of all the standards contained in the file 'patternfile'\n\n\
             'patternfile' is a text file containing several standards\n", VERSION_CODE);
     exit(-1) ;
-    
+
     //TODO adição do parametro de distancia de edicao:
     //-e, --edit emax          :   Finds all standard approximate occurrences in a maximum edition of distance 'emax'\n\n\
-    //'emax' it is an integer, equivalent the maximum edition of distance\n\n\
 
 }
-
