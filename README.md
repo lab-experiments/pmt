@@ -1,5 +1,5 @@
 # pmt
-Programa desenvolvido em C++, similar ao Grep-GNU(https://www.gnu.org/software/grep/) para busca de padrões em texto.  
+Programa desenvolvido em C++, similar ao [Grep-GNU](https://www.gnu.org/software/grep/) para busca de padrões em texto.  
 
 Estrutura principal do projeto:
 
