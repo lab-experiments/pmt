@@ -79,7 +79,7 @@ $pmt -h
 
 ##Algoritmo utilizado:
 
- - Boyer Moore: 
+Boyer Moore: 
  -   http://goo.gl/JOudnG
  -   http://goo.gl/JwNtXh
 
