@@ -7,7 +7,8 @@ Estrutura principal do projeto:
 pmt/ 
  +-- doc/
  +-- src/
- +-- README.txt
+ +-- README
+ +-- LICENSE
  ```
  
 ## Guia de Execução
@@ -31,7 +32,8 @@ pmt/
      +--obj/ 
  +-- doc/
  +-- src/
- +-- README.txt
+ +-- README
+ +-- LICENSE
  ```
 
 ####Executar o programa
